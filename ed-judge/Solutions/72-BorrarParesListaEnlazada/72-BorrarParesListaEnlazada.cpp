@@ -29,6 +29,7 @@ public:
 				//Borrar n
 				ant->sig = n->sig;
 				delete n;
+				this->nelems--;
 			}
 
 			shouldDelete = !shouldDelete;

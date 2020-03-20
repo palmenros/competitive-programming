@@ -27,6 +27,7 @@ public:
 			if(n->elem < ant->elem) {
 				//Borrar n
 				ant->sig = n->sig;
+				this->nelems--;
 				delete n;
 			} else {
 				ant = n;
