@@ -17,14 +17,17 @@ struct Instrumento {
 
 	bool operator<(const Instrumento &other) const
 	{
-		if(ratio() == other.ratio()) {
+		auto a = musicos * other.partituras;
+		auto b = other.musicos * partituras;
+
+		if(a == b) {
 			return nInstrumento < other.nInstrumento;
 		}
-		return ratio() < other.ratio();
+		return a < b;
 	}
 
-	float ratio() const {
-		return musicos / partituras;
+	long double ratio() const {
+		return musicos / (long double)partituras;
 	}
 };
 
@@ -33,6 +36,12 @@ int main()
 	int P, N;
 
 	while(cin >> P >> N) {
+
+		if(P == 0 && N == 0) {
+			cout << 0 << "\n";
+			continue;
+		}
+
 		//Todos los instrumentos deben tener al menos una partitura
 		P -= N;
 
@@ -52,7 +61,7 @@ int main()
 		}
 
 		auto worst = pq.top();
-		cout << llrint(worst.ratio()) << "\n";
+		cout << ceill(worst.ratio()) << "\n";
 	}
 
 }
